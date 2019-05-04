@@ -13,10 +13,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\RyuGame">
+      <UniqueIdentifier>{1c7a65ec-f9e6-40d9-b141-05bccf7e728d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\RyuEngine">
+      <UniqueIdentifier>{794bad58-5542-49b2-9b26-109f9ffccfa2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RyuGame.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files\RyuGame</Filter>
     </ClCompile>
+    <ClCompile Include="ApplicationBase.cpp">
+      <Filter>Source Files\RyuGame</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ApplicationBase.h">
+      <Filter>Source Files\RyuGame</Filter>
+    </ClInclude>
+    <ClInclude Include="RyuLib.h">
+      <Filter>Source Files\RyuGame</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

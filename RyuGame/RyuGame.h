@@ -13,5 +13,6 @@ public:
 protected:
 
     virtual bool InitWindow() override;
+	virtual bool InitVulkan() override;
 
 };

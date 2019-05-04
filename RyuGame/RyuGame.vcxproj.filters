@@ -30,6 +30,12 @@
     <ClCompile Include="RyuGame.cpp">
       <Filter>Source Files\RyuGame</Filter>
     </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source Files\RyuEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="RyuEngine.cpp">
+      <Filter>Source Files\RyuEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationBase.h">
@@ -40,6 +46,12 @@
     </ClInclude>
     <ClInclude Include="RyuGame.h">
       <Filter>Source Files\RyuGame</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Source Files\RyuEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="RyuEngine.h">
+      <Filter>Source Files\RyuEngine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

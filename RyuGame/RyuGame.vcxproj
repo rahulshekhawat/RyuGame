@@ -169,12 +169,16 @@
   <ItemGroup>
     <ClCompile Include="ApplicationBase.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="RyuEngine.cpp" />
     <ClCompile Include="RyuGame.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationBase.h" />
+    <ClInclude Include="RyuEngine.h" />
     <ClInclude Include="RyuGame.h" />
     <ClInclude Include="RyuLib.h" />
+    <ClInclude Include="SceneManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

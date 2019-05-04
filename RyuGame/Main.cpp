@@ -1,14 +1,14 @@
 
 #include <iostream>
-#include "ApplicationBase.h"
+#include "RyuGame.h"
 
 int main()
 {
-	UApplicationBase App;
+	FRyuGame Game;
 
 	try
 	{
-		App.Run();
+		Game.Run();
 	}
 	catch (const std::exception& e)
 	{

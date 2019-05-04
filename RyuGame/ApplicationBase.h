@@ -2,17 +2,17 @@
 
 #define GLFW_INCLUDE_VULKAN
 
-#include <GLFW/glfw3.h>
 #include <Windows.h>
+#include <GLFW/glfw3.h>
 #include "RyuLib.h"
 
 
-class RYU_API UApplicationBase
+class RYU_API FApplicationBase
 {
 public:
 
-	UApplicationBase();
-	virtual ~UApplicationBase();
+	FApplicationBase();
+	virtual ~FApplicationBase();
 
 	virtual bool Create();
 	virtual int Run();

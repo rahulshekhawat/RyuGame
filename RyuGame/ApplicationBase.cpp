@@ -1,14 +1,14 @@
 #include "ApplicationBase.h"
 
-UApplicationBase::UApplicationBase() : Window(nullptr), MainThreadID(NULL), MainProcessID(NULL)
+FApplicationBase::FApplicationBase() : Window(nullptr), MainThreadID(NULL), MainProcessID(NULL)
 {
 }
 
-UApplicationBase::~UApplicationBase()
+FApplicationBase::~FApplicationBase()
 {
 }
 
-bool UApplicationBase::Create()
+bool FApplicationBase::Create()
 {
 	CreateApplicationInfo();
 
@@ -25,7 +25,7 @@ bool UApplicationBase::Create()
 	return true;
 }
 
-int UApplicationBase::Run()
+int FApplicationBase::Run()
 {
 	rlog("Application started\n");
 
@@ -42,26 +42,26 @@ int UApplicationBase::Run()
 	return LoopReturn;
 }
 
-int UApplicationBase::MainLoop()
+int FApplicationBase::MainLoop()
 {
 	rlog("Entering Mainloop\n");
 
 	while (!glfwWindowShouldClose(Window))
 	{
-		Sleep(100);
+		Sleep(10);
 		glfwPollEvents();
 	}
 
 	return GLFW_TRUE;
 }
 
-void UApplicationBase::Destroy()
+void FApplicationBase::Destroy()
 {
 	glfwDestroyWindow(Window);
 	glfwTerminate();
 }
 
-bool UApplicationBase::InitWindow()
+bool FApplicationBase::InitWindow()
 {
 	int initResult = glfwInit();
 	if (initResult == GLFW_FALSE)
@@ -81,12 +81,12 @@ bool UApplicationBase::InitWindow()
 	return true;
 }
 
-bool UApplicationBase::InitVulkan()
+bool FApplicationBase::InitVulkan()
 {
 	return true;
 }
 
-void UApplicationBase::CreateApplicationInfo()
+void FApplicationBase::CreateApplicationInfo()
 {
 	MainThreadID = GetCurrentThreadId();
 	MainProcessID = GetCurrentProcessId();

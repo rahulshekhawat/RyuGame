@@ -27,12 +27,18 @@
     <ClCompile Include="ApplicationBase.cpp">
       <Filter>Source Files\RyuGame</Filter>
     </ClCompile>
+    <ClCompile Include="RyuGame.cpp">
+      <Filter>Source Files\RyuGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationBase.h">
       <Filter>Source Files\RyuGame</Filter>
     </ClInclude>
     <ClInclude Include="RyuLib.h">
+      <Filter>Source Files\RyuGame</Filter>
+    </ClInclude>
+    <ClInclude Include="RyuGame.h">
       <Filter>Source Files\RyuGame</Filter>
     </ClInclude>
   </ItemGroup>

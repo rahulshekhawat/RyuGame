@@ -169,9 +169,11 @@
   <ItemGroup>
     <ClCompile Include="ApplicationBase.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="RyuGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationBase.h" />
+    <ClInclude Include="RyuGame.h" />
     <ClInclude Include="RyuLib.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"typescript.tsc.autoDetect": "off",
+		"files.associations": {
+			"xlocale": "cpp",
+			"ostream": "cpp",
+			"xutility": "cpp"
+		}
+}

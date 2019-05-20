@@ -1,12 +1,23 @@
 #pragma once
 
+#include <string>
+#include <iostream>
+
 #define RYU_API
 
+#ifdef _DEBUG
 
-//~ @todo
-#define rlog
-#define renginelog
-#define rfilelog
+#define rlog(logText) std::cout<<"[LOG] : "<<logText;
+#define rlog_warn(logText) std::cout<<"[WARNING] : "<<logText;
+#define rlog_err(logText) std::cout<<"[ERROR] : "<<logText;
 
-const int DEFAULT_WIDTH = 800;
-const int DEFAULT_HEIGHT = 600;
+#elif NDEBUG
+
+#define rlog(logText)
+#define rlog_warn(logText)
+#define rlog_err(logText)
+
+#endif // _DEBUG
+
+
+

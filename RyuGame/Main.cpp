@@ -1,6 +1,9 @@
 
 #include <iostream>
+#include <cstdio>
 #include "RyuGame.h"
+
+using namespace std;
 
 int main()
 {

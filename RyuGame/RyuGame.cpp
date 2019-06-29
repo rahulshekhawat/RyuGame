@@ -31,10 +31,18 @@ bool FRyuGame::InitWindow()
 		return false;
 	}
 
+	glfwSetWindowUserPointer(Window, this);
+	glfwSetWindowSizeCallback(Window, FRyuGame::OnWindowResized);
+
 	return true;
 }
 
 bool FRyuGame::InitVulkan()
 {
 	return FApplicationBase::InitVulkan();
+}
+
+void FRyuGame::OnWindowResized(GLFWwindow* Window, int NewWidth, int NewHeight)
+{
+	//~ @todo
 }

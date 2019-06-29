@@ -13,9 +13,20 @@
 const int DEFAULT_WIDTH = 1280;
 const int DEFAULT_HEIGHT = 720;
 
+const std::vector<const char*> validationLayers = {
+	"VK_LAYER_LUNARG_standard_validation"
+};
+
 const std::vector<const char*> deviceExtensions = {
 	VK_KHR_SWAPCHAIN_EXTENSION_NAME
 };
+
+#ifdef NDEBUG
+const bool bEnableValidationLayers = false;
+#else
+const bool bEnableValidationLayers = true;
+#endif // NDEBUG
+
 
 struct QueueFamilyIndices
 {
@@ -84,9 +95,10 @@ private:
 	bool bIsActive;
 
 	VkInstance VulkanInstance;
-	VkPhysicalDevice PhysicalDevice;
+	VkPhysicalDevice PhysicalDevice = VK_NULL_HANDLE;
 	VkDevice LogicalDevice;
 	VkQueue GraphicsQueue;
+	VkQueue PresentQueue;
 	VkSurfaceKHR VulkanSurface;
 	VkSwapchainKHR SwapChain;
 	std::vector<VkImage> SwapChainImages;
@@ -94,5 +106,9 @@ private:
 	VkExtent2D SwapChainExtent;
 	std::vector<VkImageView> SwapChainImageViews;
 
+	
+	//~ Vulkan
+	bool CheckValidationLayerSupport();
+	QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device);
 
 };

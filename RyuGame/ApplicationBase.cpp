@@ -4,7 +4,9 @@ FApplicationBase::FApplicationBase() :
 	Window(nullptr),
 	MainThreadID(NULL),
 	MainProcessID(NULL),
-	bIsActive(false)
+	bIsActive(false),
+	VulkanInstance(VK_NULL_HANDLE),
+	PhysicalDevice(VK_NULL_HANDLE)
 {
 }
 
@@ -43,7 +45,7 @@ int FApplicationBase::Run()
 
 	if (!Create())
 	{
-		rlog("Application failed to create\n");
+		rlog_error("Application failed to create\n");
 		Destroy();
 		return 0;
 	}
@@ -79,9 +81,16 @@ void FApplicationBase::Destroy()
 
 bool FApplicationBase::InitWindow()
 {
+	if (Window != nullptr)
+	{
+		rlog_warn("Window already exists!");
+		return true;
+	}
+
 	int initResult = glfwInit();
 	if (initResult == GLFW_FALSE)
 	{
+		rlog_error("Failed to initialize glfw!")
 		return false;
 	}
 
@@ -91,8 +100,12 @@ bool FApplicationBase::InitWindow()
 	Window = glfwCreateWindow(DEFAULT_WIDTH, DEFAULT_HEIGHT, "RyuGame", nullptr, nullptr);
 	if (Window == nullptr)
 	{
+		rlog_error("Failed to create a window!")
 		return false;
 	}
+
+	glfwSetWindowUserPointer(Window, this);
+	glfwSetWindowSizeCallback(Window, FApplicationBase::OnWindowResized);
 
 	return true;
 }
@@ -110,6 +123,11 @@ bool FApplicationBase::InitVulkan()
 	}
 	
 	return true;
+}
+
+void FApplicationBase::OnWindowResized(GLFWwindow* Window, int NewWidth, int NewHeight)
+{
+	//~ @todo
 }
 
 std::vector<const char*> FApplicationBase::GetRequiredExtensions()

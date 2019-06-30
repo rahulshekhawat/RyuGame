@@ -178,6 +178,7 @@
     <ClInclude Include="RyuEngine.h" />
     <ClInclude Include="RyuGame.h" />
     <ClInclude Include="RyuLib.h" />
+    <ClInclude Include="RyuLogger.h" />
     <ClInclude Include="SceneManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -2,9 +2,11 @@
 
 #define GLFW_INCLUDE_VULKAN
 
+#include "RyuLogger.h"
+#include "RyuLib.h"
+
 #include <Windows.h>
 #include <GLFW/glfw3.h>
-#include "RyuLib.h"
 
 #include <stdexcept>
 #include <vector>
@@ -62,10 +64,13 @@ protected:
 	virtual bool InitWindow();
 	virtual bool InitVulkan();
 
+	static void OnWindowResized(GLFWwindow* Window, int NewWidth, int NewHeight);
+
 	GLFWwindow* Window;
 
 private:
 
+	//~ Begin Vulkan Interface
 	std::vector<const char*> GetRequiredExtensions();
 	void CreateApplicationInfo();
 	bool CreateVulkanInstance();
@@ -80,5 +85,5 @@ private:
 
 	VkInstance VulkanInstance;
 	VkPhysicalDevice PhysicalDevice;
-
+	//~ End Vulkan Interface
 };

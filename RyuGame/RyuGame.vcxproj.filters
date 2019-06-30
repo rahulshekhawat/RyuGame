@@ -53,5 +53,8 @@
     <ClInclude Include="RyuEngine.h">
       <Filter>Source Files\RyuEngine</Filter>
     </ClInclude>
+    <ClInclude Include="RyuLogger.h">
+      <Filter>Source Files\RyuEngine</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

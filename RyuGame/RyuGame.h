@@ -4,6 +4,7 @@
 
 class RYU_API FRyuGame : public FApplicationBase
 {
+	typedef FApplicationBase Super;
 
 public:
 

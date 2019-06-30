@@ -28,11 +28,13 @@ bool FApplicationBase::Create()
 
 	if (!InitWindow())
 	{
+		rlog_error("Failed to initialize window!");
 		return false;
 	}
 
 	if (!InitVulkan())
 	{
+		rlog_error("Failed to initialize vulkan!");
 		return false;
 	}
 
@@ -41,18 +43,19 @@ bool FApplicationBase::Create()
 
 int FApplicationBase::Run()
 {
-	rlog("Application started\n");
+	rlog("Starting application!");
 
 	if (!Create())
 	{
-		rlog_error("Application failed to create\n");
+		rlog_error("Application failed to create!");
 		Destroy();
-		return 0;
+		return 1;
 	}
 
 	int LoopReturn = MainLoop();
 	Destroy();
 
+	rlog("Finishing app execution!");
 	return LoopReturn;
 }
 
@@ -107,6 +110,7 @@ bool FApplicationBase::InitWindow()
 	glfwSetWindowUserPointer(Window, this);
 	glfwSetWindowSizeCallback(Window, FApplicationBase::OnWindowResized);
 
+	rlog("Successfully intialized window!");
 	return true;
 }
 
@@ -114,14 +118,17 @@ bool FApplicationBase::InitVulkan()
 {
 	if (!CreateVulkanInstance())
 	{
+		rlog_error("Failed to create vulkan instance!");
 		return false;
 	}
 
 	if (!PickPhysicalDevice())
 	{
+		rlog_error("Failed to pick a physical device!");
 		return false;
 	}
 	
+	rlog("Successfully initialized vulkan!");
 	return true;
 }
 
@@ -135,16 +142,7 @@ std::vector<const char*> FApplicationBase::GetRequiredExtensions()
 	uint32_t glfwExtensionCount = 0;
 	const char** glfwExtensions;
 	glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
-
 	std::vector<const char*> extensions(glfwExtensions, glfwExtensions + glfwExtensionCount);
-
-	/**
-	if (enableValidationLayers)
-	{
-		extensions.push_back(VK_EXT_DEBUG_UTILS_EXTENSION_NAME);
-	}
-	*/
-
 	return extensions;
 }
 
@@ -175,13 +173,12 @@ bool FApplicationBase::CreateVulkanInstance()
 
 	if (vkCreateInstance(&createInfo, nullptr, &VulkanInstance) != VK_SUCCESS)
 	{
-		rlog("failed to create instance!");
+		rlog_error("vkCreateInstance failed!");
 		return false;
 	}
-	else
-	{
-		return true;
-	}
+
+	rlog("Successfully created vulkan instance!");
+	return true;
 }
 
 bool FApplicationBase::PickPhysicalDevice()

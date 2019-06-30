@@ -19,6 +19,12 @@
     <Filter Include="Source Files\RyuEngine">
       <UniqueIdentifier>{794bad58-5542-49b2-9b26-109f9ffccfa2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\RyuEngine">
+      <UniqueIdentifier>{4dd2fb59-6237-4faa-a56a-bc4e1aa8e9fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\RyuGame">
+      <UniqueIdentifier>{a59188ee-9ae8-405e-a03c-8769f1eed6a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -39,19 +45,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationBase.h">
-      <Filter>Source Files\RyuGame</Filter>
-    </ClInclude>
-    <ClInclude Include="RyuLib.h">
-      <Filter>Source Files\RyuGame</Filter>
+      <Filter>Header Files\RyuGame</Filter>
     </ClInclude>
     <ClInclude Include="RyuGame.h">
-      <Filter>Source Files\RyuGame</Filter>
+      <Filter>Header Files\RyuGame</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>Source Files\RyuEngine</Filter>
+    <ClInclude Include="RyuLib.h">
+      <Filter>Header Files\RyuGame</Filter>
     </ClInclude>
     <ClInclude Include="RyuEngine.h">
-      <Filter>Source Files\RyuEngine</Filter>
+      <Filter>Header Files\RyuEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Header Files\RyuEngine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

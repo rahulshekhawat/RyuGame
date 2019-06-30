@@ -9,6 +9,25 @@
 #include <stdexcept>
 #include <vector>
 #include <optional>
+#include <string>
+
+struct FAppInfo
+{
+	std::string Name;
+	std::string Version;
+	std::string Author;
+	std::string Type;
+	std::string Description;
+
+	FAppInfo() :
+		Name("RyuGame"),
+		Version("0.0.1"),
+		Author("Rahul Shekhawat"),
+		Type("Game"),
+		Description("")
+	{
+	}
+};
 
 struct QueueFamilyIndices
 {
@@ -35,6 +54,8 @@ public:
 	virtual int Run();
 	virtual int MainLoop();
 	virtual void Destroy();
+
+	static FAppInfo AppInfo;
 
 protected:
 

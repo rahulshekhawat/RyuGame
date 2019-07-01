@@ -43,7 +43,7 @@ bool FApplicationBase::Create()
 
 int FApplicationBase::Run()
 {
-	rlog("Starting application!");
+	rlog("Starting app execution!");
 
 	if (!Create())
 	{
@@ -78,6 +78,8 @@ int FApplicationBase::MainLoop()
 
 void FApplicationBase::Destroy()
 {
+	vkDestroyInstance(VulkanInstance, nullptr);
+
 	glfwDestroyWindow(Window);
 	glfwTerminate();
 }
@@ -125,6 +127,12 @@ bool FApplicationBase::InitVulkan()
 	if (!PickPhysicalDevice())
 	{
 		rlog_error("Failed to pick a physical device!");
+		return false;
+	}
+
+	if (!CreateLogicalDevice())
+	{
+		rlog_error("Failed to create logical device!");
 		return false;
 	}
 	
@@ -188,7 +196,7 @@ bool FApplicationBase::PickPhysicalDevice()
 
 	if (deviceCount == 0)
 	{
-		rlog("failed to find GPUs with vulkan support!");
+		rlog("Failed to find GPUs with vulkan support!");
 		return false;
 	}
 
@@ -206,10 +214,45 @@ bool FApplicationBase::PickPhysicalDevice()
 
 	if (PhysicalDevice == VK_NULL_HANDLE)
 	{
-		rlog("failed to find a suitable GPU!");
+		rlog("Failed to find a suitable GPU!");
 		return false;
 	}
 
+	return true;
+}
+
+bool FApplicationBase::CreateLogicalDevice()
+{
+	QueueFamilyIndices indices = FindQueueFamilies(PhysicalDevice);
+
+	VkDeviceQueueCreateInfo queueCreateInfo = {};
+	queueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+	queueCreateInfo.queueFamilyIndex = indices.graphicsFamily.value();
+	queueCreateInfo.queueCount = 1;
+
+	float queuePriority = 1.0f;
+	queueCreateInfo.pQueuePriorities = &queuePriority;
+
+	VkPhysicalDeviceFeatures deviceFeatures = {};
+
+	VkDeviceCreateInfo createInfo = {};
+	createInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+
+	createInfo.pQueueCreateInfos = &queueCreateInfo;
+	createInfo.queueCreateInfoCount = 1;
+
+	createInfo.pEnabledFeatures = &deviceFeatures;
+
+	createInfo.enabledExtensionCount = 0;
+	createInfo.enabledLayerCount = 0;
+
+	if (vkCreateDevice(PhysicalDevice, &createInfo, nullptr, &LogicalDevice) != VK_SUCCESS)
+	{
+		rlog_error("vkCreateDevice failed to create logical device!");
+		return false;
+	}
+
+	vkGetDeviceQueue(LogicalDevice, indices.graphicsFamily.value(), 0, &GraphicsQueue);
 	return true;
 }
 

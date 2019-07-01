@@ -72,9 +72,14 @@ private:
 
 	//~ Begin Vulkan Interface
 	std::vector<const char*> GetRequiredExtensions();
+	
 	void CreateApplicationInfo();
+	
 	bool CreateVulkanInstance();
 	bool PickPhysicalDevice();
+	bool CreateLogicalDevice();
+
+
 	bool IsDeviceSuitable(VkPhysicalDevice device);
 	QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice device);
 
@@ -85,5 +90,7 @@ private:
 
 	VkInstance VulkanInstance;
 	VkPhysicalDevice PhysicalDevice;
+	VkDevice LogicalDevice;
+	VkQueue GraphicsQueue;
 	//~ End Vulkan Interface
 };
